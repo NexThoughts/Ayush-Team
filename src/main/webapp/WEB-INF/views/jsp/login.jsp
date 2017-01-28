@@ -24,12 +24,18 @@
             <h2 class="text-center"><s:message code="user.login"/></h2>
             <form method="post" class="form-horizontal">
                 <div class="col-lg-6 col-lg-offset-3">
-                    <c:if test="${logout != null}" >
+                    <c:if test="${logout != null}">
                         <div class="alert alert-success">
                             <strong>Success!</strong> You have been successfully logged out.
                         </div>
                     </c:if>
-                    <c:if test="${error != null}" >
+                    <c:if test="${success != null}">
+                        <div class="alert alert-success">
+                            <strong><s:message
+                                    code="signup.successful"/>
+                        </div>
+                    </c:if>
+                    <c:if test="${error != null}">
                         <div class="alert alert-danger">
                             <strong>Oops!</strong> Could not find a user with these credentials.
                         </div>
@@ -109,6 +115,12 @@
                 <strong>Oops!</strong> Could not find a user with these credentials.
             </div>
         </c:if>
+        <c:if test="${success != null}">
+            <div class="alert alert-success">
+                <strong><s:message
+                        code="signup.successful"/>
+            </div>
+        </c:if>
         <form method="post" class="form-horizontal m-t"  role="form">
             <div class="form-group">
                 <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
@@ -121,9 +133,9 @@
 
             <a href="#"><small>Forgot password?</small></a>
             <p class="text-muted text-center"><small>Do not have an account?</small></p>
-            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+            <a class="btn btn-sm btn-white btn-block" href="/signup">Create an account</a>
         </form>
-        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+        <%--<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>--%>
     </div>
 </div>
 

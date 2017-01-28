@@ -1,6 +1,7 @@
 package com.nexthoughts.hackathon.ayush.team.controllers;
 
 
+import com.nexthoughts.hackathon.ayush.team.DTO.AppUtil;
 import com.nexthoughts.hackathon.ayush.team.DTO.MailDTO;
 import com.nexthoughts.hackathon.ayush.team.services.EmailService;
 import com.nexthoughts.hackathon.ayush.team.services.RoleService;
@@ -41,7 +42,8 @@ public class mailTestController {
         mailDTO.setFromEmailAddress("gaurav.gupta@nexthoughts.com");
         mailDTO.setFromName("Gauri");
         mailDTO.setSubject("Hellloo");
-        mailDTO.setHtml("Hellloo hi bye");
+        AppUtil appUtil= new AppUtil();
+        mailDTO.setHtml(appUtil.getUserSignUp("http://www.google.com"));
         emailService.sendEmail(mailDTO);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("userrrrrrrrrrrrrrrrrrrrr");
