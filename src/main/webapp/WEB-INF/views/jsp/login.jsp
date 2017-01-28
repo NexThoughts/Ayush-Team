@@ -24,12 +24,18 @@
             <h2 class="text-center"><s:message code="user.login"/></h2>
             <form method="post" class="form-horizontal">
                 <div class="col-lg-6 col-lg-offset-3">
-                    <c:if test="${logout != null}" >
+                    <c:if test="${logout != null}">
                         <div class="alert alert-success">
                             <strong>Success!</strong> You have been successfully logged out.
                         </div>
                     </c:if>
-                    <c:if test="${error != null}" >
+                    <c:if test="${success != null}">
+                        <div class="alert alert-success">
+                            <strong><s:message
+                                    code="signup.successful"/>
+                        </div>
+                    </c:if>
+                    <c:if test="${error != null}">
                         <div class="alert alert-danger">
                             <strong>Oops!</strong> Could not find a user with these credentials.
                         </div>

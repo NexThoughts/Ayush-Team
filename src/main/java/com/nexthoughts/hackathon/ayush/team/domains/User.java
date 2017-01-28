@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "user", uniqueConstraints = {
@@ -22,6 +23,10 @@ public class User {
     Long id;
 
 
+    @NotNull
+    String uuid = UUID.randomUUID().toString();
+
+
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
@@ -32,11 +37,35 @@ public class User {
     @NotNull
     @Size(min = 3, max = 20)
     private String username;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @NotNull
     private String password;
 
-
+    @NotNull
     private String email;
+
+    @NotNull
+    private String firstName;
+
+    @NotNull
+    private String lastName;
+
 
     @OneToMany(mappedBy = "createdBy")
     private Set<Project> projectList;
@@ -53,6 +82,14 @@ public class User {
 
     @OneToMany(mappedBy = "commentBy")
     private Set<IssueComment> issueCommentSet;
+
+    private Boolean accountNonExpired = true;
+
+    private Boolean accountNonLocked = true;
+
+    private Boolean credentialsNonExpired = true;
+
+    private Boolean enabled = false;
 
 
     public Set<IssueComment> getIssueCommentSet() {
@@ -79,7 +116,6 @@ public class User {
         this.issueAssignedSet = issueAssignedSet;
     }
 
-
     public Set<Project> getProjectList() {
         return projectList;
     }
@@ -95,11 +131,6 @@ public class User {
     public void setIssueSet(Set<Issue> issueSet) {
         this.issueSet = issueSet;
     }
-
-    private Boolean accountNonExpired = true;
-    private Boolean accountNonLocked = true;
-    private Boolean credentialsNonExpired = true;
-    private Boolean enabled = false;
 
     public Boolean getAccountNonExpired() {
         return accountNonExpired;
@@ -145,6 +176,8 @@ public class User {
         this.password = userCommand.getPassword();
         this.email = userCommand.getEmail();
         this.roles = userCommand.getRoles();
+        this.firstName = userCommand.getFirstName();
+        this.lastName = userCommand.getLastName();
     }
 
 
@@ -173,6 +206,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public void setPassword(String password) {
