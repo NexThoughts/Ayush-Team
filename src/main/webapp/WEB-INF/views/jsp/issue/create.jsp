@@ -11,7 +11,7 @@
 
 <div class="container">
 
-    <sf:form commandName="issueCommand">
+    <sf:form commandName="issueCommand" method="post">
         <label for="type">Issue Type:</label>
         <input type="text" name="type" id="type">
         <sf:errors path="name" cssClass="error"/>
