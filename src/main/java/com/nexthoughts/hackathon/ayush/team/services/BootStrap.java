@@ -106,6 +106,8 @@ public class BootStrap implements InitializingBean {
         adminUserCommand.setEmail("nakul+101@nexthoughts.com");
         adminUserCommand.setUsername("nakul@admin");
         adminUserCommand.setPassword("nakul@admin");
+        adminUserCommand.setFirstName("Nakul");
+        adminUserCommand.setLastName("Pant");
         User savedAdmin = userService.read(userService.create(adminUserCommand));
         Role roleAdmin = roleService.read(roleService.create("ROLE_ADMIN", savedAdmin));
         System.out.println("Admin created with ROLE_ADMIN and username - " + savedAdmin.getUsername() + "  and password -  " + savedAdmin.getPassword());
@@ -117,6 +119,8 @@ public class BootStrap implements InitializingBean {
         userCommand.setEmail("nakul+121@nexthoughts.com");
         userCommand.setUsername("nakul@user");
         userCommand.setPassword("nakul@user");
+        userCommand.setFirstName("Nakul");
+        userCommand.setLastName("Pant");
         User savedUser = userService.read(userService.create(userCommand));
         Role roleUser = roleService.read(roleService.create("ROLE_USER", savedUser));
         System.out.println("User created with ROLE_USER and username - " + savedUser.getUsername() + "  and password -  " + savedUser.getPassword());
@@ -128,6 +132,8 @@ public class BootStrap implements InitializingBean {
         userCommand.setEmail("nakul+1@nexthoughts.com");
         userCommand.setUsername("nakul");
         userCommand.setPassword("nakul");
+        userCommand.setFirstName("Nakul");
+        userCommand.setLastName("Pant");
         User savedUser = userService.read(userService.create(userCommand));
         Role roleUser = roleService.read(roleService.create("ROLE_USER", savedUser));
         Role roleAdmin = roleService.read(roleService.create("ROLE_ADMIN", savedUser));

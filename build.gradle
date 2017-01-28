@@ -25,6 +25,8 @@ dependencies {
     compile "javax.validation:validation-api:1.1.0.Final"
     compile "org.hibernate:hibernate-validator:5.1.0.Alpha1"
     //include in compile only, exclude in the war
+    compile "javax.validation:validation-api:1.1.0.Final"
+    compile "org.hibernate:hibernate-validator:5.1.0.Alpha1"
     providedCompile 'javax.servlet:servlet-api:2.5'
 }
 
@@ -49,7 +51,7 @@ gretty {
             '-XX:MaxPermSize=256m',
             '-Xms512m',
             '-Xmx1024m']
-    port = 8075
+    port = 8087
     scanInterval = 1
     fastReload = true
     recompileOnSourceChange = true
@@ -60,4 +62,7 @@ gretty {
 }
 
 
-
+jar {
+    baseName = 'gs-validating-form-input'
+    version =  '0.1.0'
+}

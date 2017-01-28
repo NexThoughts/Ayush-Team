@@ -4,17 +4,81 @@ package com.nexthoughts.hackathon.ayush.team.command;
 import com.nexthoughts.hackathon.ayush.team.domains.Role;
 import com.nexthoughts.hackathon.ayush.team.domains.User;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 public class UserCommand {
 
     private Long id;
 
+    @NotNull(message = "Username should not be empty")
+    @Size(min = 3, max = 20)
     private String username;
 
+    @NotNull(message = "Password should not be empty")
+    @Size(min = 8, max = 20)
     private String password;
 
+    @NotNull(message = "Confirm Password should not be empty")
+    @Size(min = 8, max = 20)
+    private String confirmPassword;
+
+    @NotNull(message = "Email should not be empty")
+    @Size(min = 8, max = 35)
     private String email;
+
+    @NotNull(message = "First name should not be empty")
+    @Size(min = 5, max = 15)
+    private String firstName;
+
+    @NotNull(message = "Last name should not be empty")
+    @Size(min = 5, max = 15)
+    private String lastName;
+
+    private String uuid;
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public UserCommand(Long id, String username, String password, String email, String firstName, String lastName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     private Set<Role> roles;
 
@@ -35,6 +99,10 @@ public class UserCommand {
         this.email = user.getEmail();
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.uuid = user.getUuid();
+
     }
 
 
