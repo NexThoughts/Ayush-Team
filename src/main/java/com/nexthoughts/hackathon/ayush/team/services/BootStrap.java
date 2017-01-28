@@ -96,6 +96,7 @@ public class BootStrap implements InitializingBean {
         if (userService.list().isEmpty()) {
             createAdmin();
             createUser();
+            createUserAndAdmin();
         }
 
     }
@@ -120,5 +121,16 @@ public class BootStrap implements InitializingBean {
         Role roleUser = roleService.read(roleService.create("ROLE_USER", savedUser));
         System.out.println("User created with ROLE_USER and username - " + savedUser.getUsername() + "  and password -  " + savedUser.getPassword());
 
+    }
+
+    public void createUserAndAdmin() {
+        UserCommand userCommand = new UserCommand();
+        userCommand.setEmail("nakul+1@nexthoughts.com");
+        userCommand.setUsername("nakul");
+        userCommand.setPassword("nakul");
+        User savedUser = userService.read(userService.create(userCommand));
+        Role roleUser = roleService.read(roleService.create("ROLE_USER", savedUser));
+        Role roleAdmin = roleService.read(roleService.create("ROLE_ADMIN", savedUser));
+        System.out.println("User created with ROLE_USER and username - " + savedUser.getUsername() + "  and password -  " + savedUser.getPassword());
     }
 }

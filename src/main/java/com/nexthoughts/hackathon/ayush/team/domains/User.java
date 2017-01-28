@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "user",uniqueConstraints = {
+@Table(name = "user", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")})
 public class User {
@@ -30,7 +30,7 @@ public class User {
     Date dateCreated;
 
     @NotNull
-    @Size(min=3,max=20)
+    @Size(min = 3, max = 20)
     private String username;
     @NotNull
     private String password;
@@ -38,7 +38,7 @@ public class User {
 
     private String email;
 
-    @OneToMany(mappedBy="createdBy")
+    @OneToMany(mappedBy = "createdBy")
     private Set<Project> projectList;
 
     @OneToMany(mappedBy = "issueOwner")
@@ -78,7 +78,6 @@ public class User {
     public void setIssueAssignedSet(Set<IssueAssigned> issueAssignedSet) {
         this.issueAssignedSet = issueAssignedSet;
     }
-
 
 
     public Set<Project> getProjectList() {

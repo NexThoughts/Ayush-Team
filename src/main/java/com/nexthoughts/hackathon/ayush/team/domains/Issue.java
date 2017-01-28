@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name="issue")
+@Entity(name = "issue")
 public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +25,12 @@ public class Issue {
 
 
     @Size(min = 3, max = 50)
-
     private String description;
 
     @Enumerated(EnumType.STRING)
     private IssueType type;
 
-    @OneToMany(mappedBy="issue")
+    @OneToMany(mappedBy = "issue")
     private Set<IssueAssigned> issueAssignedSet;
 
     @NotNull
@@ -47,6 +46,7 @@ public class Issue {
 
     @OneToMany(mappedBy = "onIssue")
     private Set<IssueComment> issueCommentSet;
+
     public Long getId() {
         return id;
     }
