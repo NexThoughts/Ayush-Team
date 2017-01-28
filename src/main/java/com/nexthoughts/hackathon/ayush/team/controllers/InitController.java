@@ -6,6 +6,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Collection;
 
 @Controller
-@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class InitController {
 
     @Value(value = "login.error")
@@ -47,13 +48,16 @@ public class InitController {
     @PreAuthorize("permitAll()")
     @RequestMapping(value = "/loginHandler", method = RequestMethod.POST)
     public ModelAndView loginHandler() {
+        ModelAndView modelAndView = new ModelAndView();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Collection<GrantedAuthority> authorities = user.getAuthorities();
-        for(GrantedAuthority authority : authorities){
-            System.out.println(authority.getAuthority());
+        if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN")) && authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            modelAndView.setViewName("redirect:/admin");
+        } else if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+            modelAndView.setViewName("redirect:/admin");
+        } else {
+            modelAndView.setViewName("redirect:/user");
         }
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/user");
         return modelAndView;
     }
 
@@ -96,7 +100,7 @@ public class InitController {
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------");
-        System.out.println(user.getUsername());
+        System.out.println(user.getAuthorities());
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------");

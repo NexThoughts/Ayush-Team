@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity(name="issueAssigned")
+@Entity(name = "issueAssigned")
 
 public class IssueAssigned {
     @Id

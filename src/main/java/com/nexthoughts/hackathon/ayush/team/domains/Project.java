@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name="project")
+@Entity(name = "project")
 public class Project {
     @NotNull
     @ManyToOne
@@ -25,7 +25,7 @@ public class Project {
     @Temporal(TemporalType.TIMESTAMP)
     Date dateCreated;
 
-    @OneToMany(mappedBy="project")
+    @OneToMany(mappedBy = "project")
     private Set<Issue> issueSet;
 
     public User getCreatedBy() {
