@@ -24,9 +24,9 @@
 <div class="middle-box text-center loginscreen   animated fadeInDown">
     <div>
         <h3><s:message code="create.user"/></h3>
-        <sf:form method="post" cssClass="form-horizontal" commandName="userCommand">
+        <sf:form method="post" cssClass="form-horizontal signup" commandName="userCommand">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name" required="" name="firstName" value="${userCommand.firstName}">
+                <input type="text" class="form-control" placeholder="First Name" required="" name="firstName" id="firstName" value="${userCommand.firstName}">
                 <span class="form-errors-inline"><sf:errors path="firstName"/><br></span>
 
             </div>
@@ -36,23 +36,23 @@
 
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="User Name" required="" name="username"  value="${userCommand.username}">
+                <input type="text" class="form-control username" placeholder="User Name" required="" name="username" id="username"  value="${userCommand.username}">
                 <span class="form-errors-inline"><sf:errors path="username"/><br></span>
 
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" required="" name="email"  value="${userCommand.email}">
+                <input type="email" class="form-control" placeholder="Email" required="" name="email" id="email"  value="${userCommand.email}">
                 <span class="form-errors-inline"><sf:errors path="email"/><br></span>
 
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="" name="password"  value="${userCommand.password}">
+                <input type="password" class="form-control" placeholder="Password" required="" name="password" id="password"  value="${userCommand.password}">
                 <span class="form-errors-inline"><sf:errors path="password"/><br></span>
 
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Confirm Password" required=""  value="${userCommand.confirmPassword}"
-                       name="confirmPassword">
+                       name="confirmPassword" id="confirmPassword">
                 <span class="form-errors-inline"><sf:errors path="confirmPassword"/><br></span>
 
             </div>
@@ -75,6 +75,57 @@
 <!-- Mainly scripts -->
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/js/plugins/validate/jquery.validate.min.js" />"></script>
+
+<script>
+    jQuery(document).ready(function () {
+
+        $(".signup").validate({
+            rules: {
+                username: {
+                    required: true,
+                    remote: {
+                        url: "/checkUnique",
+                        type: "post",
+                        data: {
+                            username: function () {
+                                return $('.username').val();
+                            }
+
+                        }
+                    }
+                },
+                password: {
+
+                    required: true,
+                    minlength: 5
+                },
+                confirmPassword: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
+
+                }
+
+
+            },
+            messages: {
+                password: "Please enter a password.",
+                rpassword: {
+                    required: 'Please retype password'
+//                    equalTo: "Passwords must match."
+                },
+                username: {
+                    required: "Please enter username",
+                    remote: jQuery.validator.format(" Someone already has this username. Try another!")
+                }
+
+            }
+
+        });
+    });
+</script>
+
 </body>
 
 </html>

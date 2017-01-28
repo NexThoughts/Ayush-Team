@@ -27,12 +27,6 @@ public class mailTestController {
     @Autowired
     EmailService emailService;
 
-    @Value(value = "login.error")
-    private String error;
-
-    @Value(value = "logout.success")
-    private String logout;
-
     @PreAuthorize("permitAll()")
     @RequestMapping(value = "/sendMail", method = RequestMethod.GET)
     public ModelAndView sendEmail() {
