@@ -26,24 +26,15 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/resources/");
     }
 
+
     @Bean
-    public TilesConfigurer tilesConfigurer(){
-        TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
-        tilesConfigurer.setCheckRefresh(true);
-        return tilesConfigurer;
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setViewClass(JstlView.class);
+        viewResolver.setPrefix("/WEB-INF/views/jsp/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
     }
-
-    /**
-     * Configure ViewResolvers to deliver preferred views.
-     */
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        TilesViewResolver viewResolver = new TilesViewResolver();
-        registry.viewResolver(viewResolver);
-    }
-
-
 
     @Bean
     public MessageSource messageSource() {
