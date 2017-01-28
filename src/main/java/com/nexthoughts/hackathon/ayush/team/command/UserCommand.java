@@ -114,9 +114,6 @@ public class UserCommand {
     }
 
     public UserCommand(Long id, String username, String password, String email, Set roles) {
-        this.id = id;/**
- * Created by ayush on 28/1/17.
- */
         this.username = username;
         this.password = password;
         this.email = email;

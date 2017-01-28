@@ -51,6 +51,20 @@ public class UserService {
 
     }
 
+    public User getUserbyUUID(String uuid) {
+        return (User) getSession().createCriteria(User.class)
+                .add(Restrictions.eq("uuid", uuid)).uniqueResult();
+
+    }
+
+    public boolean activate(User user) {
+        getSession().beginTransaction();
+        user.setEnabled(true);
+        getSession().saveOrUpdate(user);
+        getSession().close();
+        return true;
+    }
+
     public List<UserCommand> list() {
         List<User> userList = getSession().createCriteria(User.class).list();
         List<UserCommand> userCommandList = new ArrayList<>();
