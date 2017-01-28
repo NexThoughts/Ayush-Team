@@ -19,9 +19,42 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Issue> getIssueSet() {
+        return issueSet;
+    }
+
+    public void setIssueSet(Set<Issue> issueSet) {
+        this.issueSet = issueSet;
+    }
+
     @NotNull
     @Size(min=3,max=20)
     private String name;
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
@@ -66,5 +99,6 @@ public class Project {
     public Project(User user, ProjectCO projectCO){
         this.name=projectCO.getName();
         this.createdBy=user;
+        this.description=projectCO.getDescription();
     }
 }
