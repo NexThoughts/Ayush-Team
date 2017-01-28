@@ -2,6 +2,7 @@ package com.nexthoughts.hackathon.ayush.team.domains;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,9 +19,13 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Size(min = 3, max = 50)
+    private String description;
+
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date dateCreated;
@@ -55,7 +60,4 @@ public class Project {
     public Project() {
     }
 
-    @Size(min = 3, max = 50)
-
-    private String description;
 }
