@@ -27,6 +27,10 @@ dependencies {
     compile "org.hibernate:hibernate-validator:5.1.0.Alpha1"
     //include in compile only, exclude in the war
     providedCompile 'javax.servlet:servlet-api:2.5'
+    compile 'org.apache.tiles:tiles-core:3.0.5'
+    compile 'org.apache.tiles:tiles-api:3.0.5'
+    compile 'org.apache.tiles:tiles-servlet:3.0.5'
+    compile 'org.apache.tiles:tiles-jsp:3.0.5'
 }
 
 jar {
