@@ -62,7 +62,7 @@ public class InitController {
         } else if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             modelAndView.setViewName("redirect:/admin");
         } else {
-            modelAndView.setViewName("redirect:/user");
+            modelAndView.setViewName("redirect:/project/list");
         }
         return modelAndView;
     }

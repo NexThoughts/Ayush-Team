@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -34,7 +35,7 @@ public class IssueController {
 
     @PreAuthorize("permitAll()")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list(Long projectId) {
+    public ModelAndView list(@RequestParam long projectId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
         List<IssueCommand> issueList = issueService.list(user, projectId);

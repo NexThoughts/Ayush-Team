@@ -18,6 +18,7 @@ import java.util.List;
 @Service
 @Transactional
 public class ProjectService {
+    @Autowired
     private SessionFactory sessionFactory;
     @Autowired
     private UserService userService;
@@ -37,7 +38,7 @@ public class ProjectService {
         String username = springSecurityUser.getUsername();
         com.nexthoughts.hackathon.ayush.team.domains.User user = userService.getUserbyUsername(username);
         Project project = new Project(user, projectCO);
-        session.save(project);
+        session.saveOrUpdate(project);
         transaction.commit();
         session.close();
 

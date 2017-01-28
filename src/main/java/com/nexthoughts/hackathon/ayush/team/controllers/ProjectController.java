@@ -40,13 +40,19 @@ public class ProjectController {
     @PreAuthorize("permitAll()")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView save(@Valid ProjectCO projectCO, BindingResult result) {
+        System.out.print(projectCO.getDescription());
+        System.out.print(projectCO.getName());
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
+        if(user==null){
+            modelAndView.setViewName("project/create");
+        }
         if (result.hasErrors()) {
             modelAndView.setViewName("project/create");
         } else {
             projectService.create(projectCO, user);
-            modelAndView.setViewName("redirect:list");
+            modelAndView.setViewName("redirect:/list");
         }
         return modelAndView;
     }

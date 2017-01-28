@@ -78,6 +78,50 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/checkUnique", method = RequestMethod.POST)
+    public Boolean checkUnique(@RequestParam String username) {
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        System.out.println("-----------------------------" + username);
+        return true;
+
+    }
+
 
     @RequestMapping(value = "/activate", method = RequestMethod.GET)
     public ModelAndView activate(@RequestParam String uuid) {
