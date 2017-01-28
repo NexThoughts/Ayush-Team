@@ -23,10 +23,6 @@ public class Project {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Set<Issue> getIssueSet() {
         return issueSet;
     }
@@ -65,9 +61,6 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private Set<Issue> issueSet;
 
-    @NotNull
-    @Size(min = 3, max = 20)
-    private String name;
 
     public User getCreatedBy() {
         return createdBy;
@@ -93,9 +86,6 @@ public class Project {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
 
     @Override
     public String toString() {

@@ -40,7 +40,8 @@
                             <td>${counter.index+1}</td>
                             <td>${project.getName()}</td>
                             <td>${project.getDescription()}</td>
-                            <td><a class="btn btn-success" href="<s:url value="edit?identity=${project.getId()}"/>">Edit</a>
+                            <td><a class="btn btn-success" href="<s:url value="edit?${project.getId()}"/>">Edit</a>
+                            <%--<td><a class="btn btn-success" href="<s:url value="edit?identity=${project.getId()}"/>">Edit</a>--%>
                             </td>
                         </tr>
                     </c:forEach>

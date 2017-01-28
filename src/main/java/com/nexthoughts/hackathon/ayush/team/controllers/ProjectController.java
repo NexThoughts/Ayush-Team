@@ -63,7 +63,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable Long identity) {
+    public ModelAndView edit(@RequestParam Long identity) {
 
         Project project = projectService.read(identity);
         ProjectCO projectCO=new ProjectCO(project);
