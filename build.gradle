@@ -23,11 +23,16 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.1.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.1.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.1.RELEASE'
-
+    compile "javax.validation:validation-api:1.1.0.Final"
+    compile "org.hibernate:hibernate-validator:5.1.0.Alpha1"
     //include in compile only, exclude in the war
     providedCompile 'javax.servlet:servlet-api:2.5'
 }
 
+jar {
+    baseName = 'gs-validating-form-input'
+    version =  '0.1.0'
+}
 
 buildscript {
     repositories {

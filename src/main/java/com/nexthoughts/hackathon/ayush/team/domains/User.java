@@ -2,23 +2,100 @@ package com.nexthoughts.hackathon.ayush.team.domains;
 
 
 import com.nexthoughts.hackathon.ayush.team.command.UserCommand;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    private String username;
 
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    Date lastUpdated;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    Date dateCreated;
+
+    @NotNull
+    @Size(min=3,max=20)
+    private String username;
+    @NotNull
     private String password;
 
+
     private String email;
+
+    @OneToMany(mappedBy="createdBy")
+    private Set<Project> projectList;
+
+    @OneToMany(mappedBy = "issueOwner")
+    private Set<Issue> issueSet;
+
+
+    @OneToMany(mappedBy = "assignee")
+    private Set<IssueAssigned> issueAssignedSet;
+
+    @OneToMany(mappedBy = "user")
+    private Set<IssueState> issueStateSet;
+
+    @OneToMany(mappedBy = "commentBy")
+    private Set<IssueComment> issueCommentSet;
+
+
+    public Set<IssueComment> getIssueCommentSet() {
+        return issueCommentSet;
+    }
+
+    public void setIssueCommentSet(Set<IssueComment> issueCommentSet) {
+        this.issueCommentSet = issueCommentSet;
+    }
+
+    public Set<IssueState> getIssueStateSet() {
+        return issueStateSet;
+    }
+
+    public void setIssueStateSet(Set<IssueState> issueStateSet) {
+        this.issueStateSet = issueStateSet;
+    }
+
+    public Set<IssueAssigned> getIssueAssignedSet() {
+        return issueAssignedSet;
+    }
+
+    public void setIssueAssignedSet(Set<IssueAssigned> issueAssignedSet) {
+        this.issueAssignedSet = issueAssignedSet;
+    }
+
+
+
+    public Set<Project> getProjectList() {
+        return projectList;
+    }
+
+    public void setProjectList(Set<Project> projectList) {
+        this.projectList = projectList;
+    }
+
+    public Set<Issue> getIssueSet() {
+        return issueSet;
+    }
+
+    public void setIssueSet(Set<Issue> issueSet) {
+        this.issueSet = issueSet;
+    }
 
     private Boolean accountNonExpired = true;
     private Boolean accountNonLocked = true;
