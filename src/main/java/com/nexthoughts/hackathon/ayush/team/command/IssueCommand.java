@@ -4,6 +4,8 @@ package com.nexthoughts.hackathon.ayush.team.command;
 import com.nexthoughts.hackathon.ayush.team.domains.*;
 import com.nexthoughts.hackathon.ayush.team.enums.IssueType;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 public class IssueCommand {
@@ -12,6 +14,7 @@ public class IssueCommand {
 
     private String description;
 
+    @NotNull(message = "Please mention the Type of Issue")
     private IssueType type;
 
     private Set<IssueAssigned> issueAssignedSet;
@@ -20,18 +23,14 @@ public class IssueCommand {
 
     private Project project;
 
-    private Set<IssueState> issueStateSet;
-
-    private Set<IssueComment> issueCommentSet;
 
     public IssueCommand() {
     }
 
-    public IssueCommand(Long id, IssueType type, User issueOwner, Set<IssueComment> issueCommentSet) {
+    public IssueCommand(Long id, IssueType type, User issueOwner) {
         this.id = id;
         this.type = type;
         this.issueOwner = issueOwner;
-        this.issueCommentSet = issueCommentSet;
     }
 
     public IssueCommand(Long id, String description, IssueType type, User issueOwner, Project project) {
@@ -42,25 +41,6 @@ public class IssueCommand {
         this.project = project;
     }
 
-    public IssueCommand(Long id) {
-        this.id = id;
-    }
-
-    public Set<IssueState> getIssueStateSet() {
-        return issueStateSet;
-    }
-
-    public void setIssueStateSet(Set<IssueState> issueStateSet) {
-        this.issueStateSet = issueStateSet;
-    }
-
-    public Set<IssueComment> getIssueCommentSet() {
-        return issueCommentSet;
-    }
-
-    public void setIssueCommentSet(Set<IssueComment> issueCommentSet) {
-        this.issueCommentSet = issueCommentSet;
-    }
 
     public Long getId() {
         return id;

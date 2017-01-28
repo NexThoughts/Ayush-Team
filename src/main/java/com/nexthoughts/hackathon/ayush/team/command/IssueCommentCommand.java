@@ -4,6 +4,8 @@ package com.nexthoughts.hackathon.ayush.team.command;
 import com.nexthoughts.hackathon.ayush.team.domains.Issue;
 import com.nexthoughts.hackathon.ayush.team.domains.User;
 
+import javax.validation.constraints.NotNull;
+
 public class IssueCommentCommand {
 
     private Long id;
