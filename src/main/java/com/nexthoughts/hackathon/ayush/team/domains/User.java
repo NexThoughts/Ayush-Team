@@ -38,6 +38,11 @@ public class User {
     @Size(min = 3, max = 100)
     private String username;
 
+    public User(String uuid, Boolean enabled) {
+        this.uuid = uuid;
+        this.enabled = enabled;
+    }
+
     public String getFirstName() {
         return firstName;
     }

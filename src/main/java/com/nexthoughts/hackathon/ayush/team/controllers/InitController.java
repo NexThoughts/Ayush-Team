@@ -36,10 +36,16 @@ public class InitController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout) {
+                              @RequestParam(value = "logout", required = false) String logout,
+                              @RequestParam(value = "logout", required = false) String activationSuccess,
+                              @RequestParam(value = "logout", required = false) String activationFailure,
+                              @RequestParam(value = "logout", required = false) String activationExpire) {
         ModelAndView modelAndView = new ModelAndView();
         if (error != null) modelAndView.addObject("error", error);
         if (logout != null) modelAndView.addObject("logout", logout);
+        if (activationSuccess != null) modelAndView.addObject("activationSuccess", "activationSuccess");
+        if (activationFailure != null) modelAndView.addObject("activationFailure", "activationFailure");
+        if (activationExpire != null) modelAndView.addObject("activationExpire", "activationExpire");
         modelAndView.setViewName("login");
         return modelAndView;
     }

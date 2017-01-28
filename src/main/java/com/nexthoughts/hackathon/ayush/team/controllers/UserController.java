@@ -11,7 +11,6 @@ import com.nexthoughts.hackathon.ayush.team.services.UserService;
 import com.nexthoughts.hackathon.ayush.team.services.validator.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -81,22 +79,21 @@ public class UserController {
     }
 
 
-    @PreAuthorize("permitAll()")
     @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    public ModelAndView activate(@RequestParam String uuid, RedirectAttributes redirectAttributes) {
+    public ModelAndView activate(@RequestParam String uuid) {
         ModelAndView modelAndView = new ModelAndView();
-        User user = userService.getUserbyUUID(uuid);
+        UserCommand user = userService.getUserbyUUID(uuid);
         if (user != null) {
             if (userService.activate(user)) {
-                redirectAttributes.addFlashAttribute("activationSuccess", "Your profile has been activated. Please login to use your account");
-                modelAndView.setViewName("redirect:/login");
+                modelAndView.addObject("activationSuccess", "Your profile has been activated. Please login to use your account");
+                modelAndView.setViewName("login");
             } else {
-                redirectAttributes.addFlashAttribute("activationFailure", "Your profile couldn't be activated.");
-                modelAndView.setViewName("redirect:/login");
+                modelAndView.addObject("activationFailure", "Your profile couldn't be activated.");
+                modelAndView.setViewName("login");
             }
         } else {
-            redirectAttributes.addFlashAttribute("activationExpire", "Your activation link has expired.");
-            modelAndView.setViewName("redirect:/login");
+            modelAndView.addObject("activationExpire", "Your activation link has expired.");
+            modelAndView.setViewName("login");
         }
         return modelAndView;
     }

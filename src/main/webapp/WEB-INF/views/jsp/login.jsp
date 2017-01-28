@@ -111,12 +111,12 @@
         </c:if>
         <c:if test="${error != null}">
             <div class="alert alert-danger">
-                <strong>Oops!</strong> Could not find a user with these credentials.
+                <strong>Could not find a user with these credentials.</strong>
             </div>
         </c:if>
         <c:if test="${activationSuccess != null}">
-            <div class="alert alert-danger">
-                <strong>"Your profile has been activated. Please login to use your account"</strong>
+            <div class="alert alert-success">
+                <strong>Your profile has been activated. Please login to use your account</strong>
             </div>
         </c:if>
         <c:if test="${activationFailure != null}">
@@ -125,7 +125,7 @@
             </div>
         </c:if>
         <c:if test="${activationExpire != null}">
-            <div class="alert alert-danger">
+            <div class="alert alert-warning">
                 <strong>Your activation link has expired.</strong>
             </div>
         </c:if>
@@ -135,7 +135,7 @@
                         code="signup.successful"/>
             </div>
         </c:if>
-        <form method="post" class="form-horizontal m-t"  role="form">
+        <form method="post" class="form-horizontal m-t" role="form">
             <div class="form-group">
                 <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
             </div>
@@ -148,12 +148,10 @@
             <a href="#">
                 <small>Forgot password?</small>
             </a>
+
             <p class="text-muted text-center">
                 <small>Do not have an account?</small>
             </p>
-            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
-            <a href="#"><small>Forgot password?</small></a>
-            <p class="text-muted text-center"><small>Do not have an account?</small></p>
             <a class="btn btn-sm btn-white btn-block" href="/signup">Create an account</a>
         </form>
         <p class="m-t">
