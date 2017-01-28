@@ -35,7 +35,7 @@ public class User {
     Date dateCreated;
 
     @NotNull
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 100)
     private String username;
 
     public String getFirstName() {

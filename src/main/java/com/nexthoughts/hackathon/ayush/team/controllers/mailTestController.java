@@ -43,7 +43,7 @@ public class mailTestController {
         mailDTO.setFromName("Gauri");
         mailDTO.setSubject("Hellloo");
         AppUtil appUtil= new AppUtil();
-        mailDTO.setHtml(appUtil.getContent("http://www.google.com"));
+        mailDTO.setHtml(appUtil.getUserSignUp("http://www.google.com"));
         emailService.sendEmail(mailDTO);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("userrrrrrrrrrrrrrrrrrrrr");
