@@ -3,6 +3,7 @@ package com.nexthoughts.hackathon.ayush.team.domains;
 import com.nexthoughts.hackathon.ayush.team.command.ProjectCO;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -54,6 +55,7 @@ public class Project {
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date dateCreated;

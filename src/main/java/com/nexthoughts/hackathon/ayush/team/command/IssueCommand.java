@@ -15,30 +15,28 @@ public class IssueCommand {
     private String description;
 
     @NotNull(message = "Please mention the Type of Issue")
-    private IssueType type;
+    private String type;
 
-    private Set<IssueAssigned> issueAssignedSet;
-
-    private User issueOwner;
-
-    private Project project;
-
+    private Long projectId;
 
     public IssueCommand() {
     }
 
-    public IssueCommand(Long id, IssueType type, User issueOwner) {
-        this.id = id;
-        this.type = type;
-        this.issueOwner = issueOwner;
+    public IssueCommand(Issue issue) {
+        this.description = issue.getDescription();
+        this.type = issue.getType();
+        this.projectId = issue.getProject().getId();
     }
 
-    public IssueCommand(Long id, String description, IssueType type, User issueOwner, Project project) {
+    public IssueCommand(Long id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+
+    public IssueCommand(Long id, String description, String type) {
         this.id = id;
         this.description = description;
         this.type = type;
-        this.issueOwner = issueOwner;
-        this.project = project;
     }
 
 
@@ -58,37 +56,19 @@ public class IssueCommand {
         this.description = description;
     }
 
-    public IssueType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(IssueType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Set<IssueAssigned> getIssueAssignedSet() {
-        return issueAssignedSet;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setIssueAssignedSet(Set<IssueAssigned> issueAssignedSet) {
-        this.issueAssignedSet = issueAssignedSet;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
-
-    public User getIssueOwner() {
-        return issueOwner;
-    }
-
-    public void setIssueOwner(User issueOwner) {
-        this.issueOwner = issueOwner;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-
 }
