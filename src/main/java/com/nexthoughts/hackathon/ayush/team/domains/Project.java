@@ -1,5 +1,6 @@
 package com.nexthoughts.hackathon.ayush.team.domains;
 
+import com.nexthoughts.hackathon.ayush.team.command.ProjectCO;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -18,6 +19,9 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @NotNull
+    @Size(min=3,max=20)
+    private String name;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
@@ -58,4 +62,9 @@ public class Project {
     @Size(min = 3, max = 50)
 
     private String description;
+
+    public Project(User user, ProjectCO projectCO){
+        this.name=projectCO.getName();
+        this.createdBy=user;
+    }
 }
