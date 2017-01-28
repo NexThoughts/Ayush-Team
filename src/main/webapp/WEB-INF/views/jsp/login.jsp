@@ -2,7 +2,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%--<html>
 <head>
     <title>Login</title>
     <link rel="stylesheet"
@@ -64,5 +64,71 @@
         </div>
     </div>
 </div>
+</body>
+</html>--%>
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link href="<c:url value="/resources/bootstrap.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/animate.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name"></h1>
+
+        </div>
+        <h3>Welcome to Fintech Track</h3>
+
+        <p>Login in. To see it in action.</p>
+        <h2 class="text-center"><s:message code="user.login"/></h2>
+        <c:if test="${logout != null}" >
+            <div class="alert alert-success">
+                <strong>Success!</strong> You have been successfully logged out.
+            </div>
+        </c:if>
+        <c:if test="${error != null}" >
+            <div class="alert alert-danger">
+                <strong>Oops!</strong> Could not find a user with these credentials.
+            </div>
+        </c:if>
+        <form method="post" class="form-horizontal m-t"  role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" id="password"
+                       placeholder="Password" required="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <a href="#"><small>Forgot password?</small></a>
+            <p class="text-muted text-center"><small>Do not have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+        </form>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="<c:url value="/resources/js/jquery-2.1.1.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>
