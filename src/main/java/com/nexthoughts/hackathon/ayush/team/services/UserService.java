@@ -67,7 +67,7 @@ public class UserService {
 
     public List<UserCommand> list() {
         List<User> userList = getSession().createCriteria(User.class).list();
-        List<UserCommand> userCommandList = new ArrayList<>();
+        List<UserCommand> userCommandList = new ArrayList<UserCommand>();
         UserCommand userCommand = null;
         for (User user : userList) {
             userCommand = new UserCommand(user);

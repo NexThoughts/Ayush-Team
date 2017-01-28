@@ -1,5 +1,6 @@
 package com.nexthoughts.hackathon.ayush.team.domains;
 
+import com.nexthoughts.hackathon.ayush.team.command.IssueCommand;
 import com.nexthoughts.hackathon.ayush.team.enums.IssueType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,8 +28,16 @@ public class Issue {
     @Size(min = 3, max = 50)
     private String description;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Enumerated(EnumType.STRING)
-    private IssueType type;
+    private String type;
 
     @OneToMany(mappedBy = "issue")
     private Set<IssueAssigned> issueAssignedSet;
@@ -52,6 +61,13 @@ public class Issue {
     }
 
     public Issue() {
+    }
+
+    public Issue(IssueCommand issueCommand, User user, Project project) {
+        this.description = issueCommand.getDescription();
+        this.issueOwner = user;
+        this.project = project;
+        this.type = issueCommand.getType();
     }
 
     public void setId(Long id) {

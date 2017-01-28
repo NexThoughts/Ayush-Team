@@ -13,27 +13,27 @@ public class UserCommand {
     private Long id;
 
     @NotNull(message = "Username should not be empty")
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 50)
     private String username;
 
     @NotNull(message = "Password should not be empty")
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 50)
     private String password;
 
     @NotNull(message = "Confirm Password should not be empty")
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 50)
     private String confirmPassword;
 
     @NotNull(message = "Email should not be empty")
-    @Size(min = 8, max = 35)
+    @Size(min = 8, max = 50)
     private String email;
 
     @NotNull(message = "First name should not be empty")
-    @Size(min = 5, max = 15)
+    @Size(min = 5, max = 30)
     private String firstName;
 
     @NotNull(message = "Last name should not be empty")
-    @Size(min = 5, max = 15)
+    @Size(min = 5, max = 30)
     private String lastName;
 
     private String uuid;
@@ -114,6 +114,7 @@ public class UserCommand {
     }
 
     public UserCommand(Long id, String username, String password, String email, Set roles) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;

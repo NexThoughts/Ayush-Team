@@ -5,16 +5,22 @@ import com.nexthoughts.hackathon.ayush.team.domains.Issue;
 import com.nexthoughts.hackathon.ayush.team.domains.User;
 import com.nexthoughts.hackathon.ayush.team.enums.IssueStatus;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class IssueStateCommand {
 
     private Long id;
 
+    @NotNull
+    @Size(min = 5, max = 25, message = "Please provide a valid and meaningful name to the State of Issue")
     private String name;
 
     private IssueStatus status;
 
     private User user;
 
+    @NotNull
     private Issue issue;
 
     public IssueStateCommand() {
