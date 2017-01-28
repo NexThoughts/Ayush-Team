@@ -4,14 +4,20 @@ package com.nexthoughts.hackathon.ayush.team.command;
 import com.nexthoughts.hackathon.ayush.team.domains.Role;
 import com.nexthoughts.hackathon.ayush.team.domains.User;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 public class UserCommand {
 
     private Long id;
 
+    @NotNull
+    @Size(min = 5, max = 20, message = "Please enter a valid Username, atleast 5 characters")
     private String username;
 
+    @NotNull
+    @Size(min = 3, max = 50, message = "Please provide a strong Password, atleast 3 characters")
     private String password;
 
     private String email;
