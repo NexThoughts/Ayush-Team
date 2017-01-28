@@ -54,7 +54,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"com.nexthoughts.spring.mvc.demo.model"});
+        sessionFactory.setPackagesToScan(new String[]{"com.nexthoughts.hackathon.ayush.team.domains"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
