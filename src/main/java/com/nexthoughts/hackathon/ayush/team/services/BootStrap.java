@@ -1,11 +1,9 @@
-package com.nexthoughts.hackathon.ayush.team.bootstrap;
+package com.nexthoughts.hackathon.ayush.team.services;
 
 
 import com.nexthoughts.hackathon.ayush.team.command.UserCommand;
 import com.nexthoughts.hackathon.ayush.team.domains.Role;
 import com.nexthoughts.hackathon.ayush.team.domains.User;
-import com.nexthoughts.hackathon.ayush.team.services.RoleService;
-import com.nexthoughts.hackathon.ayush.team.services.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

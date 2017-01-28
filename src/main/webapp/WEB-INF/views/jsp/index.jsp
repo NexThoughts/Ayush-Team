@@ -11,7 +11,7 @@
           href="<s:url value="/resources/bootstrap.min.css" />">
 </head>
 <body>
-<h3 class="text-center">${title}</h3>
-<h4 class="text-center">${message}</h4>
+<h3 class="text-center">Index Page</h3>
+<h4 class="text-center">Hackathon</h4>
 </body>
 </html>
