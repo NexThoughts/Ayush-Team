@@ -1,7 +1,6 @@
 package com.nexthoughts.hackathon.ayush.team.domains;
 
 import com.nexthoughts.hackathon.ayush.team.command.IssueCommand;
-import com.nexthoughts.hackathon.ayush.team.enums.IssueType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -36,7 +35,6 @@ public class Issue {
         this.type = type;
     }
 
-    @Enumerated(EnumType.STRING)
     private String type;
 
     @OneToMany(mappedBy = "issue")

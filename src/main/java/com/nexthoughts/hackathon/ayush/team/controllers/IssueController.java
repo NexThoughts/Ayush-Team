@@ -38,7 +38,7 @@ public class IssueController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
         List<IssueCommand> issueList = issueService.list(user, projectId);
-        modelAndView.setViewName("/issue/list");
+        modelAndView.setViewName("issue/list");
         modelAndView.addObject("issueList", issueList);
         return modelAndView;
     }
@@ -47,13 +47,13 @@ public class IssueController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/issue/create");
+        modelAndView.setViewName("issue/create");
         return modelAndView;
     }
 
 
     @PreAuthorize("permitAll()")
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView save(@Valid IssueCommand issueCommand, BindingResult result) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
@@ -75,7 +75,7 @@ public class IssueController {
     }
 
     @PreAuthorize("permitAll()")
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView update(@Valid IssueCommand issueCommand, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
