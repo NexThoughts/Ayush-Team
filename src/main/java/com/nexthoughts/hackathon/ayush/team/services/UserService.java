@@ -5,11 +5,11 @@ import com.nexthoughts.hackathon.ayush.team.domains.User;
 import com.nexthoughts.hackathon.ayush.team.services.springsecurity.PasswordEncoderService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +56,9 @@ public class UserService {
     public UserCommand getUserbyUUID(String uuid) {
         User user = (User) getSession().createCriteria(User.class)
                 .add(Restrictions.eq("uuid", uuid)).uniqueResult();
-        if(user == null){
+        if (user == null) {
             return null;
-        }else{
+        } else {
             UserCommand userCommand = new UserCommand(user);
             getSession().close();
             return userCommand;
@@ -67,34 +67,8 @@ public class UserService {
 
     public boolean activate(UserCommand user) {
         Session session = getSession();
-        Transaction tx =session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         User user1 = (User) session.get(User.class, user.getId());
-
-        System.out.println(user1.toString());
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
-        System.out.println("******************************************************************");
         user1.setEnabled(true);
         user1.setUuid(UUID.randomUUID().toString());
         session.saveOrUpdate(user1);
